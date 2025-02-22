@@ -1,101 +1,179 @@
-import Image from "next/image";
+// app/page.tsx
+'use client';
 
-export default function Home() {
+import { Cloud, Sun, Sunset } from 'lucide-react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+);
+
+export default function HomePage() {
+  // Heatmap Data
+  const labels = [
+    '12AM', '3AM', '6AM', '9AM', '12PM', '3PM', '6PM', '9PM',
+  ];
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: 'Temperature',
+        data: [46, 44, 42, 49, 52, 56, 50, 48],
+        fill: true,
+        backgroundColor: 'rgba(136, 51, 176, 0.2)',
+        borderColor: 'rgb(158, 82, 82)',
+        pointBackgroundColor: 'rgb(175, 164, 164)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(255, 255, 255)',
+      },
+    ],
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: '#fff',
+        },
+      },
+      y: {
+        grid: {
+          color: 'rgba(255, 255, 255, 0.2)',
+        },
+        ticks: {
+          color: '#fff',
+        },
+      },
+    },
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="max-w-md mx-auto p-6 space-y-6">
+      {/* Location and Temperature */}
+      <div className="text-center space-y-2">
+        <p className="text-sm text-white-200 tracking-wider">MY LOCATION</p>
+        <h1 className="text-6xl font-light">Atlanta</h1>
+        <p className="text-7xl font-thin">52°</p>
+        <p className="text-md text-white-300">
+          Feels Like: 44° | H: 52° L: 26°
+        </p>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Combined Weather Description and Hourly Forecast */}
+      <div className="bg-white bg-opacity-15 rounded-2xl p-4 backdrop-blur-md">
+        <p className="text-sm text-white-300 mb-3">
+          Sunny conditions expected around 4PM. Wind gusts up to 13 mph are making the temperature feel like 44°.
+        </p>
+        <div className="mt-4 border-t border-gray-400 border-opacity-30 pt-3">
+          <p className="text-sm text-white-300 mb-3 tracking-wider">HOURLY FORECAST</p>
+          <div className="flex overflow-x-scroll space-x-4">
+            {[
+              { time: 'Now', icon: <Cloud />, temp: '52°' },
+              { time: '4PM', icon: <Sun />, temp: '52°' },
+              { time: '5PM', icon: <Cloud />, temp: '51°' },
+              { time: '6PM', icon: <Sun />, temp: '49°' },
+              { time: '6:28PM', icon: <Sunset />, temp: 'Sunset' },
+              { time: '7PM', icon: <Cloud />, temp: '46°' },
+            ].map((hour) => (
+              <div
+                key={hour.time}
+                className="flex flex-col items-center text-gray-100 space-y-1"
+              >
+                <p className="text-xs">{hour.time}</p>
+                <div className="w-8 h-8">{hour.icon}</div>
+                <p className="text-sm">{hour.temp}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* 10-Day Forecast */}
+      <div className="bg-white bg-opacity-15 rounded-2xl p-4 backdrop-blur-md">
+        <p className="text-sm text-gray-300 mb-3 tracking-wider">10-DAY FORECAST</p>
+        <div className="space-y-2">
+          {[
+            {
+              day: 'Today',
+              icon: <Sun />,
+              low: '26°',
+              high: '52°',
+              progress: 'w-2/4 bg-blue-400',
+            },
+            {
+              day: 'Sun',
+              icon: <Cloud />,
+              low: '30°',
+              high: '54°',
+              progress: 'w-3/4 bg-blue-500',
+            },
+            {
+              day: 'Mon',
+              icon: <Sun />,
+              low: '38°',
+              high: '61°',
+              progress: 'w-4/5 bg-green-400',
+            },
+            {
+              day: 'Tue',
+              icon: <Sun />,
+              low: '41°',
+              high: '67°',
+              progress: 'w-5/6 bg-yellow-400',
+            },
+          ].map((day) => (
+            <div
+              key={day.day}
+              className="flex items-center justify-between text-gray-100"
+            >
+              <p className="w-1/6">{day.day}</p>
+              <div className="w-1/6 flex justify-center">{day.icon}</div>
+              <div className="w-2/6 flex items-center space-x-2">
+                <p>{day.low}</p>
+                <div className="flex-1 h-1 bg-gray-500 rounded-full relative">
+                  <div
+                    className={`${day.progress} h-full rounded-full absolute left-0`}
+                  ></div>
+                </div>
+                <p>{day.high}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* J3 Heatmap Section */}
+      <div className="bg-white bg-opacity-15 rounded-2xl p-4 backdrop-blur-md">
+        <p className="text-sm text-gray-300 mb-3 tracking-wider">J3 HEATMAP</p>
+        <Line data={data} options={options} />
+      </div>
     </div>
   );
 }
