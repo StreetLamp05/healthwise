@@ -1,7 +1,8 @@
 // app/page.tsx
 'use client';
 
-import { Cloud, Sun, Sunset } from 'lucide-react';
+import { useState } from 'react';
+import { Cloud, Sun, Sunset, Menu } from 'lucide-react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -27,6 +28,8 @@ ChartJS.register(
 );
 
 export default function HomePage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   // Heatmap Data
   const labels = [
     '12AM', '3AM', '6AM', '9AM', '12PM', '3PM', '6PM', '9PM',
@@ -75,24 +78,32 @@ export default function HomePage() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 space-y-6">
+    <div className="max-w-md mx-auto p-6 space-y-6 relative">
+      {/* Floating Hamburger Button */}
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="fixed top-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md rounded-full p-3 shadow-md transition duration-300 z-10"
+      >
+        <Menu className="text-white w-6 h-6" />
+      </button>
+
       {/* Location and Temperature */}
       <div className="text-center space-y-2">
-        <p className="text-sm text-white-200 tracking-wider">MY LOCATION</p>
+        <p className="text-sm text-gray-200 tracking-wider">MY LOCATION</p>
         <h1 className="text-6xl font-light">Atlanta</h1>
         <p className="text-7xl font-thin">52°</p>
-        <p className="text-md text-white-300">
+        <p className="text-md text-gray-300">
           Feels Like: 44° | H: 52° L: 26°
         </p>
       </div>
 
       {/* Combined Weather Description and Hourly Forecast */}
       <div className="bg-white bg-opacity-15 rounded-2xl p-4 backdrop-blur-md">
-        <p className="text-sm text-white-300 mb-3">
+        <p className="text-sm text-gray-300 mb-3">
           Sunny conditions expected around 4PM. Wind gusts up to 13 mph are making the temperature feel like 44°.
         </p>
         <div className="mt-4 border-t border-gray-400 border-opacity-30 pt-3">
-          <p className="text-sm text-white-300 mb-3 tracking-wider">HOURLY FORECAST</p>
+          <p className="text-sm text-gray-300 mb-3 tracking-wider">HOURLY FORECAST</p>
           <div className="flex overflow-x-scroll space-x-4">
             {[
               { time: 'Now', icon: <Cloud />, temp: '52°' },
@@ -113,6 +124,12 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* J3 Heatmap Section */}
+      <div className="bg-white bg-opacity-15 rounded-2xl p-4 backdrop-blur-md">
+        <p className="text-sm text-gray-300 mb-3 tracking-wider">J3 HEATMAP</p>
+        <Line data={data} options={options} />
       </div>
 
       {/* 10-Day Forecast */}
@@ -167,12 +184,6 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* J3 Heatmap Section */}
-      <div className="bg-white bg-opacity-15 rounded-2xl p-4 backdrop-blur-md">
-        <p className="text-sm text-gray-300 mb-3 tracking-wider">J3 HEATMAP</p>
-        <Line data={data} options={options} />
       </div>
     </div>
   );

@@ -14,14 +14,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "HealthView",
-    description: "Daily Health Status",
+    title: "HealthWise",
+    description: "Your Health Forecast",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
     return (
         <html lang="en">
-            <body className="bg-gradient-to-b from-indigo-300 to-indigo-500 min-h-screen text-white antialiased">
+            <body className="min-h-screen text-white antialiased">
                 {children}
             </body>
         </html>
