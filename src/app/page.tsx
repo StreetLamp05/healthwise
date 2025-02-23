@@ -16,6 +16,9 @@ import {
     Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import Link from 'next/link';
+import HamburgerMenu from '@/components/HamburgerMenu';
+
 
 ChartJS.register(
     CategoryScale,
@@ -116,47 +119,7 @@ export default function HomePage() {
     return (
         <div className="max-w-md mx-auto p-6 space-y-6 relative">
             {/* Floating Hamburger Button */}
-            <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="fixed top-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md rounded-full p-3 shadow-md transition duration-300 z-20"
-            >
-                {menuOpen ? (
-                    <X className="text-white w-6 h-6" />
-                ) : (
-                    <Menu className="text-white w-6 h-6" />
-                )}
-            </button>
-
-            {/* Animated Dropdown Menu */}
-            <AnimatePresence>
-                {menuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed top-14 right-4 bg-white bg-opacity-90 backdrop-blur-md rounded-lg shadow-lg p-4 w-48 z-10"
-                    >
-                        <ul className="space-y-2">
-                            <li>
-                                <button className="w-full text-left text-black hover:text-indigo-600 transition duration-200">
-                                    About
-                                </button>
-                            </li>
-                            <li>
-                                <button className="w-full text-left text-black hover:text-indigo-600 transition duration-200">
-                                    Other Section 1
-                                </button>
-                            </li>
-                            <li>
-                                <button className="w-full text-left text-black hover:text-indigo-600 transition duration-200">
-                                    Other Section 2
-                                </button>
-                            </li>
-                        </ul>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <HamburgerMenu />
 
             {/* Search Bar*/}
             <div className="flex items-center justify-end space-x-4 mb-4">
