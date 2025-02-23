@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { Cloud, Sun, Sunset, Menu, Info, Search, X, Heart } from 'lucide-react';
+import stateData from '@/app/data/StateData';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Chart as ChartJS,
