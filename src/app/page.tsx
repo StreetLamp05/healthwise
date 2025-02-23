@@ -48,6 +48,9 @@ export default function HomePage() {
     const [state, setState] = useState('Georgia');
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredStates, setFilteredStates] = useState<string[]>([]);
+    const [iliIndex, setIliIndex] = useState<number | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         const term = e.target.value;
@@ -63,11 +66,33 @@ export default function HomePage() {
         }
     };
 
-    const handleSelectState = (selectedState: string) => {
+    const handleSelectState = async (selectedState: string) => {
         setState(selectedState);
         setSearchTerm('');
         setFilteredStates([]);
-    };
+        setIliIndex(null);
+        setLoading(true);
+        setError(null);
+    
+        try {
+            const response = await fetch("http://127.0.0.1:8000/predict", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ state: selectedState })
+            });
+
+        if (!response.ok) {
+            throw new Error("State not found or API error.");
+        }
+
+        const data = await response.json();
+        setIliIndex(data.predicted_ILI_total);
+    } catch (err: any) {
+        setError(err.message || "Failed to fetch data.");
+    } finally {
+        setLoading(false);
+    }
+};
 
     // Heatmap Data
     const labels = [
@@ -153,14 +178,23 @@ export default function HomePage() {
                 <p className="text-sm text-white tracking-wider">MY LOCATION</p>
                 <h1 className="text-6xl font-light text-white">{state}</h1>
                 <div className="flex items-center justify-center space-x-2 relative">
-                    <p className="text-7xl font-thin text-white">52°</p>
+                     {/* ILI Index Display (Replaces 52°) */}
+                     {loading ? (
+                        <p className="text-7xl font-thin text-white">...</p>
+                    ) : error ? (
+                        <p className="text-2xl text-red-500">{error}</p>
+                    ) : iliIndex !== null ? (
+                        <p className="text-7xl font-thin text-white">{iliIndex.toFixed(1)}</p>
+                    ) : (
+                        <p className="text-7xl font-thin text-white">--</p> // Default when no state is selected
+                    )}
 
                     {/* Tooltip Icon */}
                     <div className="relative group">
                         <Info className="text-white w-6 h-6 opacity-80 hover:opacity-100 transition duration-300 cursor-pointer" />
                         <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 hidden group-hover:flex flex-col items-center">
                             <div className="bg-white bg-opacity-20 backdrop-blur-md text-xs text-white rounded-md px-2 py-1 shadow-md">
-                                Current Temperature
+                                Current Index
                             </div>
                             <div className="w-2 h-2 bg-white bg-opacity-20 backdrop-blur-md transform rotate-45 mt-[-4px]"></div>
                         </div>
