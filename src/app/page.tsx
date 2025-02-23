@@ -2,8 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Cloud, Sun, Sunset, Menu, Info, Search, X, Heart } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Cloud, Sun, Sunset, Info, Search, LocateFixed } from 'lucide-react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -16,9 +15,8 @@ import {
     Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import Link from 'next/link';
 import HamburgerMenu from '@/components/HamburgerMenu';
-
+import axios from 'axios';
 
 ChartJS.register(
     CategoryScale,
@@ -44,8 +42,7 @@ const US_STATES = [
 ];
 
 export default function HomePage() {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [state, setState] = useState('Georgia');
+    const [state, setState] = useState("Georgia");
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredStates, setFilteredStates] = useState<string[]>([]);
 
@@ -67,6 +64,34 @@ export default function HomePage() {
         setState(selectedState);
         setSearchTerm('');
         setFilteredStates([]);
+    };
+
+    // Function to Get Current State by Location
+    const getCurrentLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                async (position) => {
+                    const { latitude, longitude } = position.coords;
+                    try {
+                        const response = await axios.get(
+                            `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${process.env.NEXT_PUBLIC_OPENCAGE_API_KEY}`
+                        );
+                        const components = response.data.results[0].components;
+                        const currentState = components.state;
+                        setState(currentState);
+                    } catch (error) {
+                        console.log('Error fetching location:', error);
+                        alert('Unable to get location. Please try again.');
+                    }
+                },
+                (error) => {
+                    console.log('Geolocation error:', error);
+                    alert('Location access denied. Please enable location services.');
+                }
+            );
+        } else {
+            alert('Geolocation is not supported by this browser.');
+        }
     };
 
     // Heatmap Data
@@ -124,7 +149,6 @@ export default function HomePage() {
             {/* Search Bar*/}
             <div className="flex items-center justify-end space-x-4 mb-4">
                 <div className="relative w-full">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white opacity-60" />
                     <input
                         type="text"
                         placeholder="Search for a US state"
@@ -132,6 +156,12 @@ export default function HomePage() {
                         onChange={handleSearch}
                         className="w-full bg-white bg-opacity-20 backdrop-blur-md rounded-full py-2 pl-10 pr-4 text-white placeholder-white focus:outline-none"
                     />
+                    <button
+                        onClick={getCurrentLocation}
+                        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-transparent hover:bg-white hover:bg-opacity-20 rounded-full p-1 transition duration-300"
+                    >
+                        <LocateFixed className="text-white w-5 h-5" />
+                    </button>
                     {filteredStates.length > 0 && (
                         <ul className="absolute left-0 right-0 bg-white bg-opacity-80 backdrop-blur-md rounded-lg mt-1 shadow-lg max-h-60 overflow-y-auto">
                             {filteredStates.map((state) => (
@@ -225,8 +255,8 @@ export default function HomePage() {
                 </div>
             </div>
 
-             {/* Footer Text */}
-             <div className="text-center text-white mt-6">
+            {/* Footer Text */}
+            <div className="text-center text-white mt-6">
                 Built with <span className="text-red-500">&#x2764;&#xFE0F;</span> at GT Hacklytics 2025
             </div>
         </div>

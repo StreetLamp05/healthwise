@@ -14,7 +14,7 @@ export default function HamburgerMenu() {
             {/* Floating Hamburger Button */}
             <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="fixed top-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md rounded-full p-3 shadow-md transition duration-300 z-20"
+                className="fixed bottom-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md rounded-full p-3 shadow-md transition duration-300 z-20"
             >
                 {menuOpen ? (
                     <X className="text-white w-6 h-6" />
@@ -31,7 +31,7 @@ export default function HamburgerMenu() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed top-14 right-4 bg-white bg-opacity-90 backdrop-blur-md rounded-lg shadow-lg p-4 w-48 z-10"
+                        className="fixed bottom-14 right-4 bg-white bg-opacity-90 backdrop-blur-md rounded-lg shadow-lg p-4 w-40 z-10"
                     >
                         <ul className="space-y-2 text-left">
                             <li>
