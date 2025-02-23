@@ -21,14 +21,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
     return (
-        <html lang="en">
-            <head>
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
-                />
-            </head>
-            <body className="text-white antialiased">
+        <html lang="en" dir="ltr">
+            <body className="bg-gradient-to-b from-indigo-200 to-indigo-600 text-white antialiased font-sans">
                 <div className="min-h-screen">{children}</div>
             </body>
         </html>
