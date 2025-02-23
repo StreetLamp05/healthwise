@@ -191,7 +191,7 @@ export default function HomePage() {
                         <Info className="text-white w-6 h-6 opacity-80 hover:opacity-100 transition duration-300 cursor-pointer" />
                         <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 hidden group-hover:flex flex-col items-center">
                             <div className="bg-white bg-opacity-20 backdrop-blur-md text-xs text-white rounded-md px-2 py-1 shadow-md">
-                                Current Index
+                                Current Temperature
                             </div>
                             <div className="w-2 h-2 bg-white bg-opacity-20 backdrop-blur-md transform rotate-45 mt-[-4px]"></div>
                         </div>
@@ -209,7 +209,7 @@ export default function HomePage() {
                     Sunny conditions expected around 4PM. Wind gusts up to 13 mph are making the temperature feel like 44°.
                 </p>
                 <div className="mt-4 border-t border-white pt-3">
-                    <p className="text-sm text-white mb-3 tracking-wider">FORECAST</p>
+                    <p className="text-sm text-white mb-3 tracking-wider">HOURLY FORECAST</p>
                     <div className="flex overflow-x-scroll space-x-4">
                         {[
                             { time: 'Now', icon: <Cloud />, temp: '52°' },
@@ -240,7 +240,7 @@ export default function HomePage() {
 
             {/* 10-Day Forecast */}
             <div className="bg-white bg-opacity-15 rounded-2xl p-4 backdrop-blur-md">
-                <p className="text-sm text-white mb-3 tracking-wider">10-DAY FORECAST</p>
+                <p className="text-sm text-white mb-3 tracking-wider">Monthly Forecast</p>
                 <div className="space-y-2">
                     {[
                         { day: 'Today', icon: <Sun />, low: '26°', high: '52°', progress: 'w-2/4 bg-blue-400' },
@@ -258,7 +258,7 @@ export default function HomePage() {
 
             {/* US Heatmap */}
             <div className="bg-white bg-opacity-15 rounded-2xl p-4 backdrop-blur-md">
-                <h2 className="text-xl text-white mb-3">United States Heatmap</h2>
+                <h2 className="text-sm text-white mb-3 tracking-wider">United States Heatmap</h2>
                 <HeatMap />
             </div>
 

@@ -2,7 +2,7 @@
 
 const stateData = {
     "Alabama": {
-        "Population": 5157699,
+        "population": 5157699,
         "median_income": 62027,
         "ili_lag_1": 13.5716,
         "ili_lag_2": 14.7376,
@@ -11,7 +11,7 @@ const stateData = {
         "ili_rolling_mean": 3.123022867
     },
     "Alaska": {
-        "Population": 740133,
+        "population": 740133,
         "median_income": 89336,
         "ili_lag_1": 9.47277,
         "ili_lag_2": 9.7181,
@@ -29,7 +29,7 @@ const stateData = {
         "ili_rolling_mean": 1.841225905
     },
     "Arkansas": {
-        "Population": 3088354,
+        "population": 3088354,
         "median_income": 58773,
         "ili_lag_1": 10.1826,
         "ili_lag_2": 10.5263,
@@ -38,7 +38,7 @@ const stateData = {
         "ili_rolling_mean": 2.152679208
     },
     "California": {
-        "Population": 39431263,
+        "population": 39431263,
         "median_income": 96334,
         "ili_lag_1": 8.20078,
         "ili_lag_2": 8.58924,
@@ -47,7 +47,7 @@ const stateData = {
         "ili_rolling_mean": 2.466282224
     },
     "Colorado": {
-        "Population": 5957493,
+        "population": 5957493,
         "median_income": 92470,
         "ili_lag_1": 8.97819,
         "ili_lag_2": 9.25633,
@@ -56,7 +56,7 @@ const stateData = {
         "ili_rolling_mean": 1.745744856
     },
     "Connecticut": {
-        "Population": 3675069,
+        "population": 3675069,
         "median_income": 93760,
         "ili_lag_1": 8.25718,
         "ili_lag_2": 8.98529,
@@ -65,7 +65,7 @@ const stateData = {
         "ili_rolling_mean": 1.840237892
     },
     "Delaware": {
-        "Population": 1051917,
+        "population": 1051917,
         "median_income": 82855,
         "ili_lag_1": 5.11518,
         "ili_lag_2": 5.16278,
@@ -74,7 +74,7 @@ const stateData = {
         "ili_rolling_mean": 0.894892756
     },
     "Florida": {
-        "Population": 23372215,
+        "population": 23372215,
         "median_income": 71711,
         "ili_lag_1": 6.93758,
         "ili_lag_2": 7.01684,
@@ -83,7 +83,7 @@ const stateData = {
         "ili_rolling_mean": 2.110727607
     },
     "Georgia": {
-        "Population": 11180878,
+        "population": 11180878,
         "median_income": 74664,
         "ili_lag_1": 12.4544,
         "ili_lag_2": 14.6076,
@@ -92,7 +92,7 @@ const stateData = {
         "ili_rolling_mean": 2.644275207
     },
     "Hawaii": {
-        "Population": 1446146,
+        "population": 1446146,
         "median_income": 98317,
         "ili_lag_1": 13.8313,
         "ili_lag_2": 15.5854,
@@ -101,7 +101,7 @@ const stateData = {
         "ili_rolling_mean": 2.4703603
     },
     "Idaho": {
-        "Population": 2001619,
+        "population": 2001619,
         "median_income": 74636,
         "ili_lag_1": 9.5219,
         "ili_lag_2": 9.56539,
@@ -110,7 +110,7 @@ const stateData = {
         "ili_rolling_mean": 1.641968053
     },
     "Illinois": {
-        "Population": 12710158,
+        "population": 12710158,
         "median_income": 81702,
         "ili_lag_1": 6.63845,
         "ili_lag_2": 6.72126,
@@ -119,7 +119,7 @@ const stateData = {
         "ili_rolling_mean": 1.943112151
     },
     "Indiana": {
-        "Population": 6691878,
+        "population": 6691878,
         "median_income": 70695,
         "ili_lag_1": 7.84406,
         "ili_lag_2": 8.0998,
@@ -128,7 +128,7 @@ const stateData = {
         "ili_rolling_mean": 1.740765025
     },
     "Iowa": {
-        "Population": 3190369,
+        "population": 3190369,
         "median_income": 74600,
         "ili_lag_1": 6.56597,
         "ili_lag_2": 6.84535,
@@ -137,7 +137,7 @@ const stateData = {
         "ili_rolling_mean": 1.139048692
     },
     "Kansas": {
-        "Population": 2915958,
+        "population": 2915958,
         "median_income": 70695,
         "ili_lag_1": 10.7669,
         "ili_lag_2": 11.3333,
@@ -146,7 +146,7 @@ const stateData = {
         "ili_rolling_mean": 1.800117866
     },
     "Kentucky": {
-        "Population": 4468402,
+        "population": 4468402,
         "median_income": 63400,
         "ili_lag_1": 11.077,
         "ili_lag_2": 11.0917,
@@ -155,7 +155,7 @@ const stateData = {
         "ili_rolling_mean": 1.585426587
     },
     "Louisiana": {
-        "Population": 4657757,
+        "population": 4657757,
         "median_income": 61400,
         "ili_lag_1": 12.8926,
         "ili_lag_2": 13.5776,
@@ -164,7 +164,7 @@ const stateData = {
         "ili_rolling_mean": 2.958021302
     },
     "Maine": {
-        "Population": 1362359,
+        "population": 1362359,
         "median_income": 70695,
         "ili_lag_1": 7.92808,
         "ili_lag_2": 8.36395,
@@ -173,7 +173,7 @@ const stateData = {
         "ili_rolling_mean": 1.118451956
     },
     "Maryland": {
-        "Population": 6045680,
+        "population": 6045680,
         "median_income": 104710,
         "ili_lag_1": 8.07718,
         "ili_lag_2": 8.11639,
@@ -182,7 +182,7 @@ const stateData = {
         "ili_rolling_mean": 2.090972019
     },
     "Massachusetts": {
-        "Population": 7029917,
+        "population": 7029917,
         "median_income": 104710,
         "ili_lag_1": 9.18334,
         "ili_lag_2": 10.1526,
@@ -191,7 +191,7 @@ const stateData = {
         "ili_rolling_mean": 1.508638828
     },
     "Michigan": {
-        "Population": 10077331,
+        "population": 10077331,
         "median_income": 70695,
         "ili_lag_1": 7.83332,
         "ili_lag_2": 8.02499,
@@ -200,7 +200,7 @@ const stateData = {
         "ili_rolling_mean": 1.315638304
     },
     "Minnesota": {
-        "Population": 5639632,
+        "population": 5639632,
         "median_income": 70695,
         "ili_lag_1": 6.73487,
         "ili_lag_2": 6.93707,
@@ -209,7 +209,7 @@ const stateData = {
         "ili_rolling_mean": 1.618216079
     },
     "Mississippi": {
-        "Population": 2989260,
+        "population": 2989260,
         "median_income": 61400,
         "ili_lag_1": 11.5652,
         "ili_lag_2": 12.2444,
@@ -219,7 +219,7 @@ const stateData = {
     },
 
     "Missouri": {
-        "Population": 6154913,
+        "population": 6154913,
         "median_income": 70695,
         "ili_lag_1": 10.7224,
         "ili_lag_2": 10.7473,
@@ -228,7 +228,7 @@ const stateData = {
         "ili_rolling_mean": 1.698041362
     },
     "Montana": {
-        "Population": 1084225,
+        "population": 1084225,
         "median_income": 70695,
         "ili_lag_1": 4.68316,
         "ili_lag_2": 4.81586,
@@ -237,7 +237,7 @@ const stateData = {
         "ili_rolling_mean": 0.8512998372
     },
     "Nebraska": {
-        "Population": 1961504,
+        "population": 1961504,
         "median_income": 70695,
         "ili_lag_1": 10.2772,
         "ili_lag_2": 10.3523,
@@ -246,16 +246,16 @@ const stateData = {
         "ili_rolling_mean": 2.192203681
     },
     "Nevada": {
-        "Population": 3104614,
+        "population": 3104614,
         "median_income": 70695,
         "ili_lag_1": 5.62379,
         "ili_lag_2": 5.63882,
-        "ili_lag_3": 6.31543 ,
+        "ili_lag_3": 6.31543,
         "ili_lag_4": 7.31942,
         "ili_rolling_mean": 1.414429253
     },
     "New Hampshire": {
-        "Population": 1359711,
+        "population": 1359711,
         "median_income": 70695,
         "ili_lag_1": 8.47092,
         "ili_lag_2": 10.0437,
@@ -264,7 +264,7 @@ const stateData = {
         "ili_rolling_mean": 1.204616498
     },
     "New Jersey": {
-        "Population": 8882190,
+        "population": 8882190,
         "median_income": 104710,
         "ili_lag_1": 12.1513,
         "ili_lag_2": 13.0516,
@@ -273,7 +273,7 @@ const stateData = {
         "ili_rolling_mean": 2.845785758
     },
     "New Mexico": {
-        "Population": 2117522,
+        "population": 2117522,
         "median_income": 70695,
         "ili_lag_1": 14.0904,
         "ili_lag_2": 15.4059,
@@ -282,7 +282,7 @@ const stateData = {
         "ili_rolling_mean": 2.765714814
     },
     "New York": {
-        "Population": 19453561,
+        "population": 19453561,
         "median_income": 104710,
         "ili_lag_1": 9.81455,
         "ili_lag_2": 10.3037,
@@ -291,7 +291,7 @@ const stateData = {
         "ili_rolling_mean": 1.868426584
     },
     "North Carolina": {
-        "Population": 10488084,
+        "population": 10488084,
         "median_income": 70695,
         "ili_lag_1": 8.65161,
         "ili_lag_2": 8.65292,
@@ -300,7 +300,7 @@ const stateData = {
         "ili_rolling_mean": 1.736771675
     },
     "North Dakota": {
-        "Population": 762062,
+        "population": 762062,
         "median_income": 70695,
         "ili_lag_1": 9.03583,
         "ili_lag_2": 11.2766,
@@ -309,7 +309,7 @@ const stateData = {
         "ili_rolling_mean": 2.224695069
     },
     "Ohio": {
-        "Population": 11689100,
+        "population": 11689100,
         "median_income": 70695,
         "ili_lag_1": 9.93038,
         "ili_lag_2": 10.2964,
@@ -318,7 +318,7 @@ const stateData = {
         "ili_rolling_mean": 1.515273968
     },
     "Oklahoma": {
-        "Population": 3956971,
+        "population": 3956971,
         "median_income": 70695,
         "ili_lag_1": 12.8354,
         "ili_lag_2": 14.4065,
@@ -327,7 +327,7 @@ const stateData = {
         "ili_rolling_mean": 2.526011885
     },
     "Oregon": {
-        "Population": 4217737,
+        "population": 4217737,
         "median_income": 70695,
         "ili_lag_1": 8.36457,
         "ili_lag_2": 9.11707,
@@ -336,7 +336,7 @@ const stateData = {
         "ili_rolling_mean": 1.363688983
     },
     "Pennsylvania": {
-        "Population": 12801989,
+        "population": 12801989,
         "median_income": 70695,
         "ili_lag_1": 6.57262,
         "ili_lag_2": 6.65157,
@@ -345,7 +345,7 @@ const stateData = {
         "ili_rolling_mean": 1.553710352
     },
     "Rhode Island": {
-        "Population": 1059639,
+        "population": 1059639,
         "median_income": 104710,
         "ili_lag_1": 7.81563,
         "ili_lag_2": 8.39862,
@@ -354,7 +354,7 @@ const stateData = {
         "ili_rolling_mean": 1.066732533
     },
     "South Carolina": {
-        "Population": 5118425,
+        "population": 5118425,
         "median_income": 70695,
         "ili_lag_1": 16.1169,
         "ili_lag_2": 16.478,
@@ -363,7 +363,7 @@ const stateData = {
         "ili_rolling_mean": 2.167233096
     },
     "South Dakota": {
-        "Population": 886667,
+        "population": 886667,
         "median_income": 70695,
         "ili_lag_1": 4.74987,
         "ili_lag_2": 4.8319,
@@ -372,7 +372,7 @@ const stateData = {
         "ili_rolling_mean": 1.182019997
     },
     "Tennessee": {
-        "Population": 6910840,
+        "population": 6910840,
         "median_income": 70695,
         "ili_lag_1": 12.7202,
         "ili_lag_2": 13.3386,
@@ -381,7 +381,7 @@ const stateData = {
         "ili_rolling_mean": 2.101407479
     },
     "Texas": {
-        "Population": 29145505,
+        "population": 29145505,
         "median_income": 70695,
         "ili_lag_1": 13.449,
         "ili_lag_2": 13.9335,
@@ -390,7 +390,7 @@ const stateData = {
         "ili_rolling_mean": 3.439220861
     },
     "Utah": {
-        "Population": 3271616,
+        "population": 3271616,
         "median_income": 70695,
         "ili_lag_1": 6.93167,
         "ili_lag_2": 7.27637,
@@ -399,7 +399,7 @@ const stateData = {
         "ili_rolling_mean": 1.823324674
     },
     "Vermont": {
-        "Population": 643077,
+        "population": 643077,
         "median_income": 70695,
         "ili_lag_1": 5.94282,
         "ili_lag_2": 6.05428,
@@ -408,7 +408,7 @@ const stateData = {
         "ili_rolling_mean": 1.513705692
     },
     "Virginia": {
-        "Population": 8631393,
+        "population": 8631393,
         "median_income": 70695,
         "ili_lag_1": 9.87439,
         "ili_lag_2": 10.5629,
@@ -417,7 +417,7 @@ const stateData = {
         "ili_rolling_mean": 2.352700073
     },
     "Washington": {
-        "Population": 7693612,
+        "population": 7693612,
         "median_income": 70695,
         "ili_lag_1": 9.03203,
         "ili_lag_2": 10.6642,
@@ -426,7 +426,7 @@ const stateData = {
         "ili_rolling_mean": 1.289423268
     },
     "West Virginia": {
-        "Population": 1793716,
+        "population": 1793716,
         "median_income": 70695,
         "ili_lag_1": 6.77623,
         "ili_lag_2": 7.37364,
@@ -435,7 +435,7 @@ const stateData = {
         "ili_rolling_mean": 1.428950976
     },
     "Wisconsin": {
-        "Population": 5893718,
+        "population": 5893718,
         "median_income": 70695,
         "ili_lag_1": 5.75515,
         "ili_lag_2": 5.76586,
@@ -444,7 +444,7 @@ const stateData = {
         "ili_rolling_mean": 1.406271397
     },
     "Wyoming": {
-        "Population": 576851,
+        "population": 576851,
         "median_income": 70695,
         "ili_lag_1": 9.26488,
         "ili_lag_2": 9.84127,

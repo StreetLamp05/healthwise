@@ -3,6 +3,7 @@ import pandas as pd
 import xgboost as xgb
 import numpy as np
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 # Load trained XGBoost model
 model = xgb.XGBRegressor()
@@ -10,6 +11,15 @@ model.load_model("ili_xgboost_optimized_optimized.json")  # Ensure you save your
 
 # Initialize FastAPI
 app = FastAPI(title="ILI Forecasting API", description="Predict future ILI totals per state.")
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Define input schema
 class ILIRequest(BaseModel):
@@ -27,14 +37,14 @@ class ILIRequest(BaseModel):
 def predict_ili(data: ILIRequest):
     # Create DataFrame for model input
     input_data = pd.DataFrame([{
-        "Population": data.population,
-        "Median_Income": data.median_income,
-        "ILI_LAG_1": data.ili_lag_1,
-        "ILI_LAG_2": data.ili_lag_2,
-        "ILI_LAG_3": data.ili_lag_3,
-        "ILI_LAG_4": data.ili_lag_4,
-        "ILI_ROLLING_MEAN": data.ili_rolling_mean,
-        "WEEK": data.week
+        "population": data.population,
+        "median_income": data.median_income,
+        "ili_lag_1": data.ili_lag_1,
+        "ili_lag_2": data.ili_lag_2,
+        "ili_lag_3": data.ili_lag_3,
+        "ili_lag_4": data.ili_lag_4,
+        "ili_rolling_mean": data.ili_rolling_mean,
+        "week": data.week
     }])
 
     # Make prediction & convert to Python float
