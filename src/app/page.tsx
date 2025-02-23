@@ -16,6 +16,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import HamburgerMenu from '@/components/HamburgerMenu';
+import HeatMap from '@/components/HeatMap';
 import axios from 'axios';
 
 ChartJS.register(
@@ -183,7 +184,7 @@ export default function HomePage() {
                 <p className="text-sm text-white tracking-wider">MY LOCATION</p>
                 <h1 className="text-6xl font-light text-white">{state}</h1>
                 <div className="flex items-center justify-center space-x-2 relative">
-                    <p className="text-7xl font-thin text-white">52°</p>
+                    <p className="text-7xl font-thin text-white">25 </p>
 
                     {/* Tooltip Icon */}
                     <div className="relative group">
@@ -198,7 +199,7 @@ export default function HomePage() {
                 </div>
 
                 <p className="text-md text-white">
-                    Feels Like: 44° | H: 52° L: 26°
+                    hello!
                 </p>
             </div>
 
@@ -253,6 +254,12 @@ export default function HomePage() {
                         </div>
                     ))}
                 </div>
+            </div>
+
+            {/* US Heatmap */}
+            <div className="bg-white bg-opacity-15 rounded-2xl p-4 backdrop-blur-md">
+                <h2 className="text-xl text-white mb-3">United States Heatmap</h2>
+                <HeatMap />
             </div>
 
             {/* Footer Text */}
