@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Cloud, Sun, Sunset, Info, Search, LocateFixed } from 'lucide-react';
+import { Cloud, Sun, Sunset, Info, LocateFixed } from 'lucide-react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -18,6 +18,18 @@ import { Line } from 'react-chartjs-2';
 import HamburgerMenu from '@/components/HamburgerMenu';
 import HeatMap from '@/components/HeatMap';
 import axios from 'axios';
+import stateData from '@/app/data/StateData'; // Import StateData
+
+type StateDataType = {
+    population: number;
+    median_income: number;
+    ili_lag_1: number;
+    ili_lag_2: number;
+    ili_lag_3: number;
+    ili_lag_4: number;
+    ili_rolling_mean: number;
+}
+
 
 ChartJS.register(
     CategoryScale,
@@ -29,6 +41,11 @@ ChartJS.register(
     Legend,
     Filler
 );
+
+const typedStateData: Record<string, StateDataType> = stateData;
+
+let riskState: string | null = null;
+let riskIndex: number | null = null;
 
 // List of US States
 const US_STATES = [
@@ -42,10 +59,13 @@ const US_STATES = [
     'Wisconsin', 'Wyoming'
 ];
 
+
 export default function HomePage() {
     const [state, setState] = useState("Georgia");
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredStates, setFilteredStates] = useState<string[]>([]);
+    const [localRiskIndex, setLocalRiskIndex] = useState<number | null>(null);
+
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         const term = e.target.value;
@@ -61,11 +81,47 @@ export default function HomePage() {
         }
     };
 
-    const handleSelectState = (selectedState: string) => {
+    const handleSelectState = async (selectedState: string) => {
         setState(selectedState);
         setSearchTerm('');
         setFilteredStates([]);
+        riskState = selectedState;
+        try {
+            const response = await getRiskIndex(selectedState); // Call the function to get the risk index
+            riskIndex = response; // Store globally
+            setLocalRiskIndex(response); // Update the UI with the new risk index
+        } catch (error) {
+            console.error('Error fetching risk index:', error);
+        }
     };
+
+    const getRiskIndex = async (selectedState: string) => {
+        if (!stateData[selectedState]) {
+            console.error(`No data available for ${selectedState}`);
+            return null;
+        }
+
+        const payload = {
+            state: selectedState,
+            population: stateData[selectedState].population,
+            median_income: stateData[selectedState].median_income,
+            ili_lag_1: stateData[selectedState].ili_lag_1,
+            ili_lag_2: stateData[selectedState].ili_lag_2,
+            ili_lag_3: stateData[selectedState].ili_lag_3,
+            ili_lag_4: stateData[selectedState].ili_lag_4,
+            ili_rolling_mean: stateData[selectedState].ili_rolling_mean,
+            week: 8
+        };
+
+        try {
+            const response = await axios.post("http://127.0.0.1:5000/predict", payload); // API call to fetch risk index
+            return response.data.predicted_ILI_total; // Return fetched risk index
+        } catch (error) {
+            console.error(`Error fetching risk index for ${selectedState}:`, error);
+            return null;
+        }
+    };
+
 
     // Function to Get Current State by Location
     const getCurrentLocation = () => {
@@ -142,6 +198,8 @@ export default function HomePage() {
         },
     };
 
+
+
     return (
         <div className="max-w-md mx-auto p-6 space-y-6 relative">
             {/* Floating Hamburger Button */}
@@ -168,7 +226,9 @@ export default function HomePage() {
                             {filteredStates.map((state) => (
                                 <li
                                     key={state}
-                                    onClick={() => handleSelectState(state)}
+                                    onClick={() => {
+                                        handleSelectState(state);
+                                    }}
                                     className="px-4 py-2 cursor-pointer hover:bg-gray-200 hover:bg-opacity-50 transition duration-200 text-black"
                                 >
                                     {state}
@@ -179,28 +239,33 @@ export default function HomePage() {
                 </div>
             </div>
 
+
+
+            {/* Risk Index */}
+
+
             {/* Location and Temperature */}
             <div className="text-center space-y-2">
                 <p className="text-sm text-white tracking-wider">MY LOCATION</p>
                 <h1 className="text-6xl font-light text-white">{state}</h1>
                 <div className="flex items-center justify-center space-x-2 relative">
-                    <p className="text-7xl font-thin text-white">25 </p>
+
+                    <p className="text-7xl font-thin text-white">
+                        {localRiskIndex !== null ? `${localRiskIndex.toFixed(2)}%` : "..."}
+                        {/* Display risk index when available */}
+                    </p>
 
                     {/* Tooltip Icon */}
                     <div className="relative group">
                         <Info className="text-white w-6 h-6 opacity-80 hover:opacity-100 transition duration-300 cursor-pointer" />
                         <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 hidden group-hover:flex flex-col items-center">
                             <div className="bg-white bg-opacity-20 backdrop-blur-md text-xs text-white rounded-md px-2 py-1 shadow-md">
-                                Current Temperature
+                                Risk Index
                             </div>
                             <div className="w-2 h-2 bg-white bg-opacity-20 backdrop-blur-md transform rotate-45 mt-[-4px]"></div>
                         </div>
                     </div>
                 </div>
-
-                <p className="text-md text-white">
-                    hello!
-                </p>
             </div>
 
             {/* Combined Weather Description and Hourly Forecast */}
