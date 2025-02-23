@@ -191,7 +191,7 @@ export default function HomePage() {
                         <Info className="text-white w-6 h-6 opacity-80 hover:opacity-100 transition duration-300 cursor-pointer" />
                         <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 hidden group-hover:flex flex-col items-center">
                             <div className="bg-white bg-opacity-20 backdrop-blur-md text-xs text-white rounded-md px-2 py-1 shadow-md">
-                                Current Temperature
+                                Current Index
                             </div>
                             <div className="w-2 h-2 bg-white bg-opacity-20 backdrop-blur-md transform rotate-45 mt-[-4px]"></div>
                         </div>
@@ -209,7 +209,7 @@ export default function HomePage() {
                     Sunny conditions expected around 4PM. Wind gusts up to 13 mph are making the temperature feel like 44°.
                 </p>
                 <div className="mt-4 border-t border-white pt-3">
-                    <p className="text-sm text-white mb-3 tracking-wider">HOURLY FORECAST</p>
+                    <p className="text-sm text-white mb-3 tracking-wider">FORECAST</p>
                     <div className="flex overflow-x-scroll space-x-4">
                         {[
                             { time: 'Now', icon: <Cloud />, temp: '52°' },
