@@ -1,14 +1,10 @@
+/* app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-    background: linear-gradient(to bottom, #c3dafe, #5a67d8);
-    min-height: 100%;
-  }
-
 body {
-    background: transparent;
+    background: linear-gradient(to bottom, #c3dafe, #5a67d8);
+    background-color: #5a67d8;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    min-height: 100vh;
 }
