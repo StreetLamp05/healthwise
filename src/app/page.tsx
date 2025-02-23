@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Cloud, Sun, Sunset, Menu, Info, Search, X } from 'lucide-react';
+import { Cloud, Sun, Sunset, Menu, Info, Search, X, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Chart as ChartJS,
@@ -223,6 +223,11 @@ export default function HomePage() {
                         </div>
                     ))}
                 </div>
+            </div>
+
+             {/* Footer Text */}
+             <div className="text-center text-white mt-6">
+                Built with <span className="text-red-500">&#x2764;&#xFE0F;</span> at GT Hacklytics 2025
             </div>
         </div>
     );
