@@ -123,7 +123,6 @@ export default function HomePage() {
     };
 
 
-    // Function to Get Current State by Location
     const getCurrentLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -135,7 +134,16 @@ export default function HomePage() {
                         );
                         const components = response.data.results[0].components;
                         const currentState = components.state;
-                        setState(currentState);
+
+                        if (US_STATES.includes(currentState)) {
+                            setState(currentState);
+                            riskState = currentState; // Update global state
+
+                            await updateRiskIndex(currentState); // Fetch risk index
+                        } else {
+                            console.error('Invalid state detected:', currentState);
+                            alert('Could not detect a valid US state.');
+                        }
                     } catch (error) {
                         console.log('Error fetching location:', error);
                         alert('Unable to get location. Please try again.');
