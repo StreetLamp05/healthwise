@@ -1,11 +1,11 @@
 // pages/team/index.tsx
 import HamburgerMenu from '@/components/HamburgerMenu';
-import { Twitter, Linkedin, Github } from 'lucide-react';
+import {Linkedin, Github } from 'lucide-react';
 
 const teamMembers = [
     {
         name: 'David Kan',
-        description: 'Description here.',
+        description: 'Full-stack developer with a focus in ML',
         image: 'images/david.png',
         socials: {
             linkedin: 'https://www.linkedin.com/in/david-kan-da/',
@@ -14,7 +14,7 @@ const teamMembers = [
     },
     {
         name: 'Jasmine Nguyen',
-        description: 'Description here.',
+        description: 'Data science, manipulation, and visualization',
         image: 'images/jasmine.png',
         socials: {
             linkedin: 'https://www.linkedin.com/in/jasnquyen/',
@@ -23,7 +23,7 @@ const teamMembers = [
     },
     {
         name: 'Kevin Niu',
-        description: 'Description here.',
+        description: 'Distributed systems engineer and UI/UX',
         image: 'images/kevin.png',
         socials: {
             linkedin: 'https://www.linkedin.com/in/kevinsniu/',
@@ -59,7 +59,7 @@ export default function Team() {
                             className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white"
                         />
                         <h2 className="mt-4 text-xl font-semibold text-white">{member.name}</h2>
-                        <p className="text-sm text-gray-300">{member.description}</p>
+                        <p className="text-sm text-white">{member.description}</p>
                         <div className="flex justify-center space-x-4 mt-4">
                             <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer">
                                 <Linkedin className="text-white hover:text-blue-600 w-5 h-5 transition-colors duration-300" />
