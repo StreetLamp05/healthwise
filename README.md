@@ -1,3 +1,6 @@
+[![Video Thumbnail](https://img.youtube.com/vi/FfuW5zOT2xo/0.jpg)](https://www.youtube.com/watch?v=FfuW5zOT2xo)
+
+
 ## Inspiration
 In a world where seasonal flu outbreaks can strain healthcare systems and disrupt daily life, staying one step ahead can make all the difference. HealthWise empowers communities by predicting future influenza-like illness (ILI) prevalence across the United States. By harnessing the power of machine learning and leveraging historical flu trends alongside socio-economic data, HealthWise forecasts ILI rates with remarkable accuracy. These insights are visualized through dynamic heat maps, helping users identify high-risk areas at a glance and take proactive measures to protect their health and well-being. Our mission is simple yet powerful: to turn data into action, safeguarding communities before illness strikes.
 
